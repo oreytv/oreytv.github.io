@@ -1,0 +1,265 @@
+@font-face {
+    font-family: Arco;
+    src: url(ARCO.ttf)
+}
+
+@font-face {
+    font-family: KG;
+    src: url(DIMBO.ttf)
+}
+
+body {
+    background-image: url("gradient.png");
+    background-size: cover;
+    z-index: -24;
+    margin: 0;
+}
+
+.background-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    min-height: 100vh; /* Set the height to 100% of the viewport height */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+t {
+    color: #fffbe5;
+    font-size: 32px;
+    font-family: KG;
+    text-shadow: 0 2px 0 rgb(0 40 146 / 0.36);
+}
+
+p {
+    color: #fffbe5;
+    font-size: 24px;
+    font-family: Arco;
+    text-shadow: 0 2px 0 rgb(0 40 146 / 0.36);
+}
+
+p2 {
+    position: absolute;
+    font-size: 24px;
+    font-family: Arco;
+    background: linear-gradient(to top, #ecb900, #fff630);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    z-index: 5;
+    overflow-y: visible;
+}
+
+    p2.shadow {
+        position: absolute;
+        font-size: 24px;
+        font-family: Arco;
+        background: linear-gradient(to top, #f08200, #f8bc00);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        text-shadow: 0px 1px #502c06;
+        z-index: 4;
+        overflow: hidden;
+    }
+
+
+.not-open {
+	position:absolute;
+	margin-left:-0px;
+}
+
+.not-open img {
+	width: 140px;
+	height: auto;
+}
+
+.editserv-whatido {
+    position: relative;
+    width: 540px;
+    height: 210px;
+    top: 90px;
+    left: 70px;
+
+    text-align:center;
+    overflow: hidden;
+
+    background-image: url(whatdoido.png);
+    background-size:cover;
+    border-radius:13px;
+    padding:12px;
+}
+
+.editserv-exact {
+    position: relative;
+    width: 360px;
+    height: 310px;
+    top: -100px;
+    left: 610px;
+    text-align: left;
+    overflow: hidden;
+    background-size: cover;
+    border-radius: 13px;
+    padding: 12px;
+}
+
+.portfoliotext {
+    position: relative;
+    top: -180px;
+    left: 70px; 
+}
+
+.portfolio {
+    position: absolute;
+    top: 410px;
+    left: 50px;
+    white-space: nowrap;
+    overflow-x: auto;
+    width: calc(100% - 60px);
+    padding: 10px;
+    border-radius: 19px;
+    background-color: rgb(0 5 139 / 0.33);
+     
+}
+
+
+
+    .portfolio iframe {
+        margin: 2px;
+        display: inline-block;
+        border-radius: 10px;
+    }
+
+.oreytvlogo {
+    position: absolute;
+    width: 530px;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .oreytvlogo img {
+        width: 530px;
+    }
+
+
+.mainmenucontainer {
+    position: relative;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.portfoliocontactbutton {
+    position: fixed;
+    top: 120px;
+    right:60px;
+    overflow-y: visible;
+}
+
+
+.mainmenubutton {
+    width: 135px;
+    height: 105px;
+    border: none;
+    color: white;
+    background-image: url("button image bg.png");
+    background-size: 160%;
+    margin: 20px;
+    border-radius: 33px;
+    border: 2px solid white;
+    transition: transform 0.3s; /* Added a transition for a smoother effect */
+}
+
+.mainmenubutton-disabled {
+    width: 135px;
+    height: 105px;
+    border: none;
+    color: white;
+    background-image: url("disabled button image bg.png");
+    background-size: 160%;
+    margin: 20px;
+    border-radius: 33px;
+    border: 2px solid white;
+}
+
+    /*#region Button Animations for hovering*/
+
+
+    .mainmenubutton:hover {
+        animation: scale-up 0.13s forwards; /* Use a different animation name for scale up */
+    }
+
+@keyframes scale-up {
+    0% {
+        transform: scale(1.0); /* initial scale */
+    }
+
+    50% {
+        transform: scale(1.15); /* scale at half duration */
+    }
+
+    100% {
+        transform: scale(1.12); /* final scale */
+    }
+}
+
+/* New keyframe animation for hover off */
+.mainmenubutton:not(:hover) {
+    animation: scale-down 0.43s forwards; /* Animation for scale down when not hovering */
+}
+
+@keyframes scale-down {
+    0% {
+        transform: scale(1.12); /* initial scale, same as final scale of the hover animation */
+    }
+
+    30% {
+        transform: scale(0.95); /* scale at half duration */
+    }
+
+    100% {
+        transform: scale(1.0); /* final scale, back to the original scale */
+    }
+}
+
+/*#endregion hovering*/
+
+    /*#region Button Animations for clicking*/
+
+.mainmenubutton:active {
+    animation: scale-down-click 0.13s forwards; /* Animation for scale down when clicked */
+}
+
+@keyframes scale-down-click {
+    0% {
+        transform: scale(1.0); /* initial scale */
+    }
+
+    50% {
+        transform: scale(0.95); /* scale at half duration */
+    }
+
+    100% {
+        transform: scale(1.0); /* final scale, back to the original scale */
+    }
+}
+
+/*#endregion hovering*/
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,74 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="stylemusic.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="dumbassglow">
+        <img src="glow.png">
+    </div>
+    <div class="musiccontainer">
+        <button class="playmusicbutton" onclick="playAudio()"><p2>Take A Peek</p2></button>
+		<a href="index.html"><p>Go back</p></a>
+    </div>
+
+    <script>
+        let currentAudio = null;
+
+        function playAudio() {
+            // Check if there is an ongoing audio and stop it
+            if (currentAudio !== null && !currentAudio.paused) {
+                currentAudio.pause();
+            }
+
+            // Get the list of audio files in the "musicsnpis" folder
+            const audioFolder = 'musicsnpis/';
+            const audioFiles = [
+				'craze1f.wav',
+				'craze2f.wav',
+				'culturallycontent1f.wav',
+				'culturallycontent2f.wav',
+				'fromgameost1f.wav',
+				'fromgameost2f.wav',
+				'hacked1f.wav',
+                'hacked2f.wav',
+                'harmony1f.wav',
+                'harmony2f.wav',
+                'harmony3f.wav',
+                'harmony4f.wav',
+                'intrusive1f.wav',
+                'intrusive2f.wav',
+                'intrusive3f.wav',
+                'intrusive4f.wav',
+                'shh1f.wav',
+                'shh2f.wav',
+                'shh3f.wav',
+                'thelab1f.wav',
+                'thelab2f.wav',
+                'vox1f.wav',
+                'vox2f.wav',
+				'weirdlife1f.wav'
+            ];
+
+            // Choose a random audio file from the list
+            const randomIndex = Math.floor(Math.random() * audioFiles.length);
+            const randomAudioFile = audioFiles[randomIndex];
+
+            // Create an audio element and set its source
+            const audio = new Audio(audioFolder + randomAudioFile);
+
+            // Play the audio
+            audio.play();
+
+            // Set the current audio to the newly created audio element
+            currentAudio = audio;
+        }
+    </script>
+</body>
+</html>
