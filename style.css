@@ -1,0 +1,29 @@
+body {
+    background-image: url('noise.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+b {
+    color: aliceblue;
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    top:5px;
+}
+
+.box {
+    background-color: rgba(92, 92, 92, 0.103); /* Transparent background */
+    width: 50%;
+    height: 60px;
+    padding: 20px;
+    align-content: center;
+    text-align: center;
+    backdrop-filter: blur(12px); /* Blurs the background behind the box */
+    border-radius: 55px; /* Rounded corners for a smooth effect */
+    border-width: 1px;
+    border-style: inset;
+    box-shadow: 0 4px 30px rgba(77, 69, 69, 0.527); /* Subtle shadow */
+}
