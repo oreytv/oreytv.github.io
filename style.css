@@ -1,29 +1,293 @@
-body {
-    background-image: url('noise.png');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
+    @font-face {
+        font-family: 'asap';
+        src: url('./font/asap.otf');
+    }
 
-b {
-    color: aliceblue;
-    font-size: 45px;
-    font-family: Arial, Helvetica, sans-serif;
-    top:5px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-.box {
-    background-color: rgba(92, 92, 92, 0.103); /* Transparent background */
-    width: 50%;
-    height: 60px;
-    padding: 20px;
-    align-content: center;
-    text-align: center;
-    backdrop-filter: blur(12px); /* Blurs the background behind the box */
-    border-radius: 55px; /* Rounded corners for a smooth effect */
-    border-width: 1px;
-    border-style: inset;
-    box-shadow: 0 4px 30px rgba(77, 69, 69, 0.527); /* Subtle shadow */
-}
+    a {
+        color: #ffffff;
+    }
+
+    i {
+        color: #a3a3a3;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #007BFF;
+        font-family: 'asap';
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+    }
+
+    .box {
+        width: 150px;
+        height: 70px;
+        background-color: #1f1f1f;
+        border: 5px solid #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        color: white;
+        text-transform: uppercase;
+        transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        border-radius: 22px;
+        box-shadow: 0 4px 0px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    }
+
+    .life-content,
+    .links-content,
+    .interests-content,
+    .portfolio-content {
+        position: absolute;
+        top: 20%; /* start below box */
+        left: 10%;
+        width: 80%;
+        background-color: rgb(17, 17, 17);
+        color: white;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: left;
+        font-size: 16px;
+        letter-spacing: 3px;
+        opacity: 0; /* hideat first */
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+        transform: translateY(10px); /* slide  animation */
+        z-index: 3;
+    }
+
+    .box:hover .links-content,
+    .box:hover .life-content,
+    .box:hover .portfolio-content,
+    .box:hover .interests-content {
+        opacity: 1; /* Fade in */
+        visibility: visible; /* Make it visible */
+        transform: translateY(0%); /* Slide into place */
+        max-height: 250px;
+            overflow-y: auto;
+    }
+
+    .box::before {
+        content: '';
+        background-color: rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: background-color 0.4s ease;
+    }
+
+    .box:hover {
+        width: 350px;
+        height: 350px;
+        z-index: 5;
+        font-size: 32px;
+    }
+
+    .box:hover::before {
+        background-color: rgb(50, 50, 50);
+    }
+
+
+    /* new style for hidden content within the box */
+    .box .links, .box .life, .box .portfolio, .box .interests {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(32, 32, 32, 0.9); /* slightly darker background */
+        color: white;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+        transform: translateY(10px); /* slide up animation */
+    }
+
+    #whatsthis {
+        position: absolute; /* Keep this */
+        top: 90%; /* Adjust this as needed for vertical position */
+        left: 47%; /* Center horizontally */
+        transform: translateX(-50%); /* Center horizontally */
+        background-color: transparent;
+        text-transform: none;
+        border-color: #00000000;
+        box-shadow: 0 4px 0px rgba(0, 0, 0, 0); /* Add shadow effect */
+        background-color: #00000000;
+    }
+    
+    #whatsthis:hover {
+        background-color: transparent;
+        text-transform: none;
+        border-color: #ffffff;
+    }
+
+    .box:hover .links,
+    .box:hover .life,
+    .box:hover .portfolio,
+    .box:hover .interests {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0); /* slide into place */
+    }
+
+    /* adjust the after content (text inside the boxes) */
+    .box::after {
+        content: attr(data-content);
+        position: absolute;
+        opacity: 0;
+        font-size: 20px;
+        color: white;
+        background-color: rgb(32, 32, 32);
+        padding: 20px;
+        width: 90%;
+        height: 90%;
+        display: flex;
+        font-size: 32px;
+        justify-content: center;
+        align-items: flex-start; /* zlign text to the top */
+        text-align: center;
+        transition: opacity 0.4s cubic-bezier(0.05, 0.3, 0.15, 1), transform 0.4s cubic-bezier(0.55, 0.4, 0.15, 1.1); /* curvy easing */
+        transform: scale(0.8) translateY(80%); /* start lowerr minorrrrrrrrrrrrrrrr */
+    }
+
+    .box:hover::after {
+        opacity: 1;
+        transform: scale(1) translateY(0); /* move to the top smoothly */
+    }
+
+    /* change titles */
+    #links::after {
+        content: "Here are my links!";
+    }
+
+    #life::after {
+        content: "My biograph";
+    }
+
+    #portfolio::after {
+        content: "My portfolio";
+    }
+
+    #interests::after {
+        content: "My interests";
+    }
+
+    #whatsthis::after {
+        content: "What's that thing?";
+    }
+
+    /* bean*/
+    .logo {
+        background-color: rgba(255, 255, 255, 0);
+        width: 450px;
+        height: auto;
+        z-index: 0;
+        position: relative; /* Added this */
+    }
+
+    .badcode {
+        position: absolute;
+        bottom: 3%;
+        color: #1e8bff
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+        .box {
+            width: 110px;
+            height: 60px;
+            font-size: 16px;
+        }
+
+        .life-content,
+        .links-content,
+        .interests-content,
+        .portfolio-content {
+            top: 21%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .box:hover {
+            width: 350px;
+            height: 320px;
+            z-index: 5;
+        }
+
+        .logo {
+            width: 350px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+
+        .box {
+            left: 5px;
+            width: 110px;
+            height: 70px;
+            font-size: 15px;
+        }
+
+        .box:hover {
+            width: 210px;
+            height: 300px;
+            font-size: 9px;
+            left: 25px;
+        }
+
+        .box:hover::after {
+            font-size: 15px;
+        }
+
+        .logo {
+            width: 250px;
+        }
+
+        .life-content,
+        .links-content,
+        .interests-content,
+        .portfolio-content {
+            top: 16%;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .container {
+            left: 5vw;
+        }
+    }
+
+    @keyframes shake {
+        0% { transform: translate(0); }
+        25% { transform: translate(-5px, 0); }
+        50% { transform: translate(5px, 0); }
+        75% { transform: translate(-5px, 0); }
+        100% { transform: translate(0); }
+    }
+
+    .shake {
+        animation: shake 0.5s;
+    }

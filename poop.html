@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.7">
+    <title>Interactive Divs</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @keyframes shake {
+            0% { transform: translate(12px, 0); }
+            25% { transform: translate(-12px, -12px); }
+            50% { transform: translate(12px, 0); }
+            75% { transform: translate(-12px, 12px); }
+            100% { transform: translate(0, 0); }
+        }
+        
+        #elonImage {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            animation: shake 0.1s infinite; /* Apply shake animation */
+            display: none; /* Keep hidden initially */
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoImage = document.getElementById('logoImage');
+            const gifImage = './img/OreyTV.gif'; // Path to your GIF
+            const stillImage = './img/OreyTV.png'; // Path to your still image
+    
+            logoImage.addEventListener('click', function() {
+                // Change to GIF with a unique query parameter
+                logoImage.src = `${gifImage}?t=${new Date().getTime()}`; // Add timestamp to the URL
+    
+                // Set a timeout to change back to the still image
+                setTimeout(() => {
+                    logoImage.src = stillImage; // Change back to still image
+                }, 990); // Duration to match your GIF's length
+            });
+        });
+    </script>
+    
+    
+</head>
+<body>
+    <div class="container">
+        <div class="box" id="links" data-content="Links">
+            Links
+            <div class="links-content" id="content">
+                <a href="https://x.com/orey_tv" target="_blank">Twitter/X</a><br><br>
+                <a href="https://bsky.app/profile/oreytv.bsky.social" target="_blank">Bluesky</a><br><br>
+                <a href="https://discord.gg/jeFuZWPPak" target="_blank">Discord Server</a><br><br>
+                <a href="https://www.youtube.com/@OreyTelevision" target="_blank">YouTube Channel</a><br><br>
+                <a href="https://www.instagram.com/emiringin" target="_blank">Instagram</a><br><br><br>
+            </div>
+        </div>
+        <div class="box" id="life" data-content="Life">
+            Bio
+            <div class="life-content" id="zlife-content" style="letter-spacing: 1px; text-transform: none;">
+                I am a 13 year old boy <i>from Turkiye</i><br><br>
+                My heart holds a special place for 3D artworks, music, and the passion for Video Editing, YouTube & more.<br><br>
+                <a href="https://faggot" target="_blank"><i>If you want, click on me to get redirected to a webpage with detailed information about me.</i></a>
+            </div>
+        </div>
+        <div class="box" id="portfolio" data-content="Portfolio">
+            Portfolio
+            <div class="portfolio-content" id="content" style="letter-spacing: 1px; text-transform: none;">
+                So, video editing... thumbnails... I can do more than Fall Guys things.. I promise. <br><br>
+
+                <iframe width=210px height=auto src="https://www.youtube.com/embed/44xzSfJlhfs?si=AlVD_Sj17dnsMhgf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="box" id="interests" data-content="Interests">
+            Interests
+            <div class="interests-content" id="content">
+                Fall Guys<a href="https://en.wikipedia.org/wiki/Fall_Guys" target="_blank">*</a>
+                <br><br>
+                3D Art & Animation<a href="https://en.wikipedia.org/wiki/3D" target="_blank">*</a>
+                <br><br>
+                Music<a href="https://en.wikipedia.org/wiki/Music" target="_blank">*</a>
+                <br><br>
+                YouTube Content Creation<a href="https://en.wikipedia.org/wiki/Content_creation" target="_blank">*</a>
+                <br><br>
+                Video Editing<a href="https://en.wikipedia.org/wiki/Video_editing" target="_blank">*</a>
+                <br><br>
+                <i>Hakushi Hasegawa<a href="https://ja.wikipedia.org/wiki/%E9%95%B7%E8%B0%B7%E5%B7%9D%E7%99%BD%E7%B4%99" title="Japanese Wikipedia page for musician Hakushi Hasegawa (none exist in English)" target="_blank">*</a></i>
+            </div>
+        </div>
+    </div>
+    <div class="logo">
+        <img id="logoImage" src="./img/OreyTV.png" alt="OreyTV" class="logo">
+        <div class="box" id="whatsthis">
+            What's this?
+            <div class="interests-content" id="content" style="letter-spacing: 1px;">
+                This my Fall Guys<a href="https://en.wikipedia.org/wiki/Fall_Guys" target="_blank">*</a> character. Fall Guys is the game I play on my YouTube channel, with an <i>active</i> following. It is my branding. <br><br>
+                This 3D render was made by me. <a style="color: yellow;">The model, idea, and copyright belongs to Mediatonic™ and Epic Games™.</a>
+            </div>
+        </div>
+    </div>
+    <img id="elonImage" src="./img/elonmusk.jpg" alt="Elon Musk">
+    <div class="badcode"><a href="./tr/index.html">TR</a></div>
+</body>
+</html>
