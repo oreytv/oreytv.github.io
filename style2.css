@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Asap';
+    src: url('fonts/asap.otf') format('opentype');
+}
+
+body {
+    font-family: 'Asap', sans-serif;
+    font-size: 220%;
+}
